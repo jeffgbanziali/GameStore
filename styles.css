@@ -91,12 +91,14 @@ a:hover {
 
 .container {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 2rem;
     
   }
   
   .disk {
     display: flex;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     width: 280px;
     height: 380px;
     background-color: rgb(108, 74, 74);
@@ -107,9 +109,10 @@ a:hover {
   
   .gameTitle {
     margin: 0;
-
     margin: 10px;
     padding: 10px;
+    color: white;
+    background-color: rgb(108, 74, 74);
   }
 
 .stocking {
