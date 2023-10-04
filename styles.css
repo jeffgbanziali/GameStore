@@ -90,11 +90,49 @@ a:hover {
 }
 .bigo {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    background-color: blue;
     margin-top: 20px;
 }
+
+.gameForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+.txt {
+    display: inline-block;
+    width: 150px; 
+    text-align: right;
+    margin-right: 10px; 
+}
+
+.inputEnter {
+    margin-bottom: 15px;  
+}
+.inputForm {
+    width: 300px;
+    height: 30px;
+    color: aliceblue;
+    background-color: rgb(57, 59, 59);
+    border-radius: 8px;
+}
+
+.clientBigo {
+    display: flex;
+    padding: 20px;
+    margin-top: 60px;
+}
 .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    
+    
+  }
+
+  .clientContainer {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
@@ -112,6 +150,7 @@ a:hover {
     padding: 20px;
     align-items: center;
     flex-direction: column;
+    margin-top: 20px;
   }
   
   .gameTitle {
@@ -120,6 +159,14 @@ a:hover {
     padding: 10px;
     color: white;
     background-color: rgb(46, 44, 44);
+  }
+
+  .clientTitle {
+    margin: 0;
+    margin: 10px;
+    padding: 10px;
+    color: white;
+    background-color:  rgb(26, 25, 25);
   }
 
 .stocking {

@@ -1,14 +1,20 @@
-import { addGame, getGameList } from "./controller/gameController.js";
+import {
+  addClient,
+  clientBuyGame,
+  getClientList,
+} from "./controller/clientController.js";
+import { addGame, buyGame, getGameList } from "./controller/gameController.js";
+import { showClientList } from "./view/clientView.js";
 import { showGame } from "./view/gameView.js";
 
 addGame(
-  "Storm 4",
+  "Naruto Shippuden \n Storm Connections",
   "./assets/images/storm.avif",
   "Namco Bandai",
   2023,
   12,
   "Fighting",
-  "PlayStation 4",
+  "Xbox Series X / PS5 / PS4 / PC",
   59.99
 );
 addGame(
@@ -18,7 +24,7 @@ addGame(
   2023,
   20,
   "Sports",
-  "Xbox Series X",
+  "Xbox Series X / PS5 / PS4 / Switch / PC",
   69.99
 );
 addGame(
@@ -28,7 +34,7 @@ addGame(
   2020,
   8,
   "Action-Adventure",
-  "PlayStation 5",
+  "Xbox Series X / PS5 / PS4 / PC",
   49.99
 );
 addGame(
@@ -38,7 +44,7 @@ addGame(
   2023,
   5,
   "First-Person Shooter",
-  "PC",
+  "Xbox Series X / PS5 / PS4 / PC",
   59.99
 );
 addGame(
@@ -48,7 +54,7 @@ addGame(
   2015,
   15,
   "Racing",
-  "PlayStation 4",
+  "Xbox Series X / PS5 / PS4  / PC",
   49.99
 );
 addGame(
@@ -58,7 +64,7 @@ addGame(
   2018,
   10,
   "Action-Adventure",
-  "Xbox One",
+  "Xbox Series X / PS5 / PS4 / PC",
   59.99
 );
 addGame(
@@ -68,7 +74,7 @@ addGame(
   2020,
   30,
   "Action RPG",
-  "PlayStation 4",
+  "Xbox Series X / PS5 / PS4 / Switch / PC",
   39.99
 );
 addGame(
@@ -78,7 +84,7 @@ addGame(
   2013,
   25,
   "Action-Adventure",
-  "PC",
+  "Xbox Series X / PS5 / PS4 / PC",
   29.99
 );
 addGame(
@@ -88,7 +94,7 @@ addGame(
   2020,
   18,
   "Action-Adventure",
-  "PlayStation 5",
+  "Xbox Series X / PS5 / PS4 / PC",
   49.99
 );
 addGame(
@@ -98,19 +104,54 @@ addGame(
   1992,
   22,
   "Fighting",
-  "Sega Genesis",
+  "Xbox Series X / PS5  / PC",
   39.99
 );
+
+addClient("Alice", 25, "Action", "PlayStation 4", []);
+addClient("Bob", 30, "Sports", "Xbox Series X");
+
+const clientList = getClientList();
+console.log(clientList);
+
+const alice = getClientList()[0];
+const storm4 = getGameList()[0];
+
+
+console.log("****************************************************************");
+clientBuyGame(alice, storm4);
+console.log("****************************************************************");
 
 const gameList = getGameList();
 console.log(gameList);
 
+console.log("****************************************************************");
+
+const gameListAfterPurchase = getGameList();
+console.log("Liste des jeux après l'achat:", gameListAfterPurchase);
+
+console.log("****************************************************************");
+
+
+console.log("****************************************************************");
+const gameToBuy = "EA FC 24";
+buyGame(gameToBuy);
+
+console.log("****************************************************************");
+
 document.addEventListener("DOMContentLoaded", function () {
   const gameSection = document.querySelector("#stockage");
+  const clientSection = document.querySelector("#clientStock");
+  
 
   if (gameSection) {
     showGame(gameSection);
   } else {
-    console.error("game section not found");
+    console.error("La section de jeu n'a pas été trouvée");
+  }
+  if (clientSection) {
+    showClientList(clientSection);
+  } else {
+    console.error("La section de jeu n'a pas été trouvée");
   }
 });

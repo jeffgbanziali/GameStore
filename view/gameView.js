@@ -26,7 +26,7 @@ export const showGame = (target) => {
                          Stock: ${value.stock}<br>
                          Genre: ${value.genre}<br>
                          Plateforme: ${value.plateforme}<br>
-                         Prix: ${value.prix}`;
+                         Prix: ${value.prix} € `;
 
     disk.appendChild(details);
     gameContainer.appendChild(disk);
@@ -34,3 +34,5 @@ export const showGame = (target) => {
 
   target.append(gameContainer);
 };
+
+

@@ -50,6 +50,45 @@
       </div>
     </section>
     <section class="bigo" id="stockage">
+      <form id="addNewGame" action="" method="post" class="gameForm">
+        <div class="inputEnter">
+          <label class="txt" for="titre">Titre </label>
+          <input class="inputForm" type="text" name="titre" id="titre" required />
+        </div>
+        <div class="inputEnter">
+          <label class="txt" for="image"> Image </label>
+          <input class="" type="file" accept="image/*" name="image" id="image" required />
+        </div>
+        
+        <div class="inputEnter">
+          <label class="txt" for="maisonEdition"> Maison d'édition </label>
+          <input class="inputForm" type="text" name="maisonEdition" id="maisonEdition" required />
+        </div>
+        <div class="inputEnter">
+          <label class="date" for="anneeEdition"> Année d'édition </label>
+          <input class="inputForm" type="date" name="anneeEdition" id="anneeEdition" required />
+        </div>
+        <div class="inputEnter">
+          <label class="txt" for="stock"> Stock </label>
+          <input class="inputForm" type="number" name="stock" id="stock" required />
+        </div>
+        <div class="inputEnter">
+          <label class="txt" for="genre"> Genre </label>
+          <input class="inputForm" type="text" name="genre" id="genre" required />
+        </div>
+        <div class="inputEnter">
+          <label class="txt" for="plateforme"> Plateforme </label>
+          <input class="inputForm" type="text" name="plateforme" id="plateforme" required />
+        </div>
+        <div class="inputEnter">
+          <label class="txt" for="prix"> Prix </label>
+          <input class="inputForm" type="number" name="prix" id="prix" required />
+        </div>
+        
+      </form>
+      
+    </section>
+    <section class="clientBigo" id="clientStock">
     </section>
     <script type="module" src="index.js"></script>
   </body>
