@@ -99,6 +99,7 @@ a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 10px;
   }
 .txt {
     display: inline-block;
@@ -120,8 +121,9 @@ a:hover {
 
 .clientBigo {
     display: flex;
-    padding: 20px;
-    margin-top: 60px;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
 }
 .container {
     display: flex;
@@ -195,3 +197,49 @@ a:hover {
     font-size: 10px;
     opacity: 0.9;
 }
+
+.title {
+    display: flex;
+    text-align: center;
+    color: rgb(198, 195, 191);
+    margin-bottom: 10px;
+
+}
+
+.clientForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+
+.addGame {
+    background-color: #17bfc4; 
+    color: white;
+    padding: 10px 20px; 
+    font-size: 16px; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .addGame:hover {
+    background-color: #45a049;
+  }
+
+  .addClient {
+    background-color: #ac1e99;
+    color: white; 
+    padding: 10px 20px;
+    font-size: 16px; 
+    border: none; 
+    border-radius: 5px;
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+  }
+  
+  .addClient:hover {
+    background-color: #7712c0; 
+  }

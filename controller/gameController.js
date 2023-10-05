@@ -46,3 +46,23 @@ export const buyGame = (titre) => {
     }
   };
   
+
+  const handleImageUpload = () => {
+    const imageInput = document.getElementById('imageInput');
+    const previewContainer = document.getElementById('imagePreview');
+  
+    const file = imageInput.files[0];
+  
+    if (file) {
+      const reader = new FileReader();
+  
+      reader.addEventListener('load', () => {
+        const imagePreview = document.createElement('img');
+        imagePreview.setAttribute('src', reader.result);
+        previewContainer.innerHTML = '';
+        previewContainer.appendChild(imagePreview);
+      });
+  
+      reader.readAsDataURL(file);
+    }
+  }

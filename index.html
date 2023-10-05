@@ -51,44 +51,142 @@
     </section>
     <section class="bigo" id="stockage">
       <form id="addNewGame" action="" method="post" class="gameForm">
+        <h1 class="title">ajouter un nouveau jeu dans le store</h1>
         <div class="inputEnter">
           <label class="txt" for="titre">Titre </label>
-          <input class="inputForm" type="text" name="titre" id="titre" required />
+          <input
+            class="inputForm"
+            type="text"
+            name="titre"
+            id="titre"
+            required
+          />
         </div>
         <div class="inputEnter">
+          <div id="imagePreview" class="image-preview"></div>
           <label class="txt" for="image"> Image </label>
-          <input class="" type="file" accept="image/*" name="image" id="image" required />
+          <input
+            class=""
+            type="file"
+            accept="image/*"
+            name="image"
+            id="imageInput"
+            required
+            onchange="handleImageUpload()"
+          />
         </div>
-        
+
         <div class="inputEnter">
           <label class="txt" for="maisonEdition"> Maison d'édition </label>
-          <input class="inputForm" type="text" name="maisonEdition" id="maisonEdition" required />
+          <input
+            class="inputForm"
+            type="text"
+            name="maisonEdition"
+            id="maisonEdition"
+            required
+          />
         </div>
         <div class="inputEnter">
           <label class="date" for="anneeEdition"> Année d'édition </label>
-          <input class="inputForm" type="date" name="anneeEdition" id="anneeEdition" required />
+          <input
+            class="inputForm"
+            type="date"
+            name="anneeEdition"
+            id="anneeEdition"
+            required
+          />
         </div>
         <div class="inputEnter">
           <label class="txt" for="stock"> Stock </label>
-          <input class="inputForm" type="number" name="stock" id="stock" required />
+          <input
+            class="inputForm"
+            type="number"
+            name="stock"
+            id="stock"
+            required
+          />
         </div>
         <div class="inputEnter">
           <label class="txt" for="genre"> Genre </label>
-          <input class="inputForm" type="text" name="genre" id="genre" required />
+          <select class="inputForm" name="genre" id="genre" required>
+            <option value="Action">Action</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Racing">Racing</option>
+            <option value="Sports">Sports</option>
+            <option value="Strategy">Strategy</option>
+            <option value="Simulation">Simulation</option>
+          </select>
         </div>
         <div class="inputEnter">
           <label class="txt" for="plateforme"> Plateforme </label>
-          <input class="inputForm" type="text" name="plateforme" id="plateforme" required />
+          <select class="inputForm" name="plateforme" id="plateforme" required>
+            <option value="PlayStation 4">PlayStation 4</option>
+            <option value="Xbox Series X">Xbox Series X</option>
+            <option value="PlayStation 5">PlayStation 5</option>
+            <option value="PlayStation 5">PC</option>
+            <option value="PlayStation 5">Switch</option>
+          </select>
         </div>
+
         <div class="inputEnter">
           <label class="txt" for="prix"> Prix </label>
-          <input class="inputForm" type="number" name="prix" id="prix" required />
+          <input
+            class="inputForm"
+            type="number"
+            name="prix"
+            id="prix"
+            required
+          />
         </div>
-        
+        <button class="addGame">Ajouter jeux</button>
       </form>
-      
     </section>
     <section class="clientBigo" id="clientStock">
+      <form id="addNewClient" action="" method="post" class="clientForm">
+        <div class="inputEnter">
+          <label class="txt" for="nom">Nom </label>
+          <input class="inputForm" type="text" name="nom" id="nom" required />
+        </div>
+        <div class="inputEnter">
+          <label class="txt" for="age">Age </label>
+          <input class="inputForm" type="number" name="age" id="age" required />
+        </div>
+        <div class="inputEnter">
+          <label class="txt" for="genrePrefere">Genre préféré </label>
+          <select class="inputForm" name="genre" id="genrePrefere" required>
+            <option value="Action">Action</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Racing">Racing</option>
+            <option value="Sports">Sports</option>
+            <option value="Strategy">Strategy</option>
+            <option value="Simulation">Simulation</option>
+          </select>
+        </div>
+        <div class="inputEnter">
+          <label class="txt" for="plateformePreferee"
+            >Plateforme préférée
+          </label>
+          <select class="inputForm" name="plateforme" id="plateformePreferee" required>
+            <option value="PlayStation 4">PlayStation 4</option>
+            <option value="Xbox Series X">Xbox Series X</option>
+            <option value="PlayStation 5">PlayStation 5</option>
+            <option value="PlayStation 5">PC</option>
+            <option value="PlayStation 5">Switch</option>
+          </select>
+        </div>
+        <div class="inputEnter">
+          <label class="txt" for="jeuxAchete">Jeux achetés </label>
+          <input
+            class="inputForm"
+            type="text"
+            name="jeuxAchete"
+            id="jeuxAchete"
+            required
+          />
+        </div>
+        <button class="addClient">Ajouter client</button>
+      </form>
+    
     </section>
     <script type="module" src="index.js"></script>
   </body>
