@@ -137,27 +137,44 @@ buyGame(gameToBuy);
 
 console.log("****************************************************************");
 
-document.addEventListener("DOMContentLoaded", function () {
-  const gameSection = document.querySelector("#stockage");
-  const clientSection = document.querySelector("#clientStock");
 
-  if (gameSection) {
-    showGame(gameSection);
-  } else {
-    console.error("La section de jeu n'a pas été trouvée");
-  }
-  if (clientSection) {
-    showClientList(clientSection);
-  } else {
-    console.error("La section de jeu n'a pas été trouvée");
-  }
-});
+
+const onSubmitForm = (gameData) => {
+  const gameContainer = document.querySelector(".container");
+
+        const disk = document.createElement("article");
+        disk.setAttribute("class", "disk");
+
+        const image = document.createElement("img");
+        image.setAttribute("class", "image");
+        image.src = gameData.image; 
+        image.alt = gameData.titre;
+        disk.appendChild(image);
+
+        const title = document.createElement("h5");
+        title.setAttribute("class", "gameTitle");
+        title.appendChild(document.createTextNode(gameData.titre));
+        disk.appendChild(title);
+
+        const details = document.createElement("p");
+        details.setAttribute("class", "details");
+        details.innerHTML = `Maison d'édition: ${gameData.maisonEdition}<br>
+                             Année d'édition: ${gameData.anneeEdition}<br>
+                             Stock: ${gameData.stock}<br>
+                             Genre: ${gameData.genre}<br>
+                             Plateforme: ${gameData.plateforme}<br>
+                             Prix: ${gameData.prix} € `;
+
+        disk.appendChild(details);
+        gameContainer.appendChild(disk);
+}
 
 document.addEventListener("DOMContentLoaded", function () {
   const gameForm = document.querySelector("#addNewGame");
   const submitButton = document.querySelector(".addGame");
+  const gameSection = document.querySelector("#stockage");
 
-  if (gameForm && submitButton) {
+  if (gameForm && submitButton && gameSection) {
     submitButton.addEventListener("click", function (event) {
       event.preventDefault();
 
@@ -199,6 +216,8 @@ document.addEventListener("DOMContentLoaded", function () {
           parseFloat(gameData.prix)
         );
 
+        onSubmitForm(gameData); 
+
         gameForm.reset();
       } else {
         console.error("Veuillez remplir tous les champs obligatoires.");
@@ -208,5 +227,22 @@ document.addEventListener("DOMContentLoaded", function () {
     console.error(
       "La section de formulaire de jeu ou le bouton n'a pas été trouvée"
     );
+  }
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const gameSection = document.querySelector("#stockage");
+  const clientSection = document.querySelector("#clientStock");
+
+  if (gameSection) {
+    showGame(gameSection);
+  } else {
+    console.error("La section de jeu n'a pas été trouvée");
+  }
+  if (clientSection) {
+    showClientList(clientSection);
+  } else {
+    console.error("La section de jeu n'a pas été trouvée");
   }
 });

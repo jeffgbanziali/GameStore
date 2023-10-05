@@ -1,4 +1,6 @@
 import { Game } from "../class/Game.js";
+import { showGame } from "../view/gameView.js";
+
 
 export const addGame = (
   titre,
@@ -22,7 +24,9 @@ export const addGame = (
   );
 
   Game.gameList.push(newGame);
+  
 };
+
 
 export const getGameList = () => {
   return Game.gameList;
@@ -43,9 +47,7 @@ export const buyGame = (titre) => {
   }
 };
 
-
-
-const handleImageUpload = () => {
+export const handleImageUpload = () => {
   const imageInput = document.getElementById("imageInput");
   const previewContainer = document.getElementById("imagePreview");
 
@@ -64,3 +66,8 @@ const handleImageUpload = () => {
     reader.readAsDataURL(file);
   }
 };
+
+
+
+
+
