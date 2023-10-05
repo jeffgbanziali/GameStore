@@ -117,7 +117,6 @@ console.log(clientList);
 const alice = getClientList()[0];
 const storm4 = getGameList()[0];
 
-
 console.log("****************************************************************");
 clientBuyGame(alice, storm4);
 console.log("****************************************************************");
@@ -132,7 +131,6 @@ console.log("Liste des jeux après l'achat:", gameListAfterPurchase);
 
 console.log("****************************************************************");
 
-
 console.log("****************************************************************");
 const gameToBuy = "EA FC 24";
 buyGame(gameToBuy);
@@ -142,7 +140,6 @@ console.log("****************************************************************");
 document.addEventListener("DOMContentLoaded", function () {
   const gameSection = document.querySelector("#stockage");
   const clientSection = document.querySelector("#clientStock");
-  
 
   if (gameSection) {
     showGame(gameSection);
@@ -153,5 +150,63 @@ document.addEventListener("DOMContentLoaded", function () {
     showClientList(clientSection);
   } else {
     console.error("La section de jeu n'a pas été trouvée");
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const gameForm = document.querySelector("#addNewGame");
+  const submitButton = document.querySelector(".addGame");
+
+  if (gameForm && submitButton) {
+    submitButton.addEventListener("click", function (event) {
+      event.preventDefault();
+
+      const formData = new FormData(gameForm);
+      let gameData = {};
+
+      formData.forEach((value, key) => {
+        if (key === "image") {
+          const file = gameForm.querySelector("#imageInput").files[0];
+          gameData[key] = file;
+        } else {
+          gameData[key] = value;
+        }
+      });
+
+      console.log("FormData:", formData);
+      console.log("Processed Game Data:", gameData);
+
+      if (
+        gameData.titre &&
+        gameData.maisonEdition &&
+        gameData.anneeEdition &&
+        gameData.stock &&
+        gameData.genre &&
+        gameData.plateforme &&
+        gameData.prix
+      ) {
+        submitButton.classList.add("success");
+        console.log("Données du jeu:", gameData);
+
+        addGame(
+          gameData.titre,
+          gameData.image,
+          gameData.maisonEdition,
+          parseInt(gameData.anneeEdition),
+          parseInt(gameData.stock),
+          gameData.genre,
+          gameData.plateforme,
+          parseFloat(gameData.prix)
+        );
+
+        gameForm.reset();
+      } else {
+        console.error("Veuillez remplir tous les champs obligatoires.");
+      }
+    });
+  } else {
+    console.error(
+      "La section de formulaire de jeu ou le bouton n'a pas été trouvée"
+    );
   }
 });

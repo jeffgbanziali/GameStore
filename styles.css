@@ -117,6 +117,7 @@ a:hover {
     color: aliceblue;
     background-color: rgb(57, 59, 59);
     border-radius: 8px;
+    padding: 6px;
 }
 
 .clientBigo {
