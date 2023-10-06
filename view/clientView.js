@@ -29,6 +29,6 @@ export const showClientList = (target) => {
   target.append(clientContainer);
 };
 
-const showClientPurchases = (purchases) => {
+export const showClientPurchases = (purchases) => {
   return purchases.map((purchase) => purchase.titre).join(", ");
 };

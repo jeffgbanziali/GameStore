@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="icon" href="./assets/icons/gaming-logo-49540.png"
+    />
     <title>Kinzo Game</title>
   </head>
   <body>
@@ -11,16 +14,16 @@
       <div>
         <ul class="nav-links">
           <li>
-            <a href="#about">Home</a>
+            <a href="#home">Accueil</a>
           </li>
           <li>
-            <a href="#experience">Game Store</a>
+            <a href="#gameStore">Game Store</a>
           </li>
           <li>
-            <a href="#projects">Streams</a>
+            <a href="#streams">Les Streams</a>
           </li>
           <li>
-            <a href="#contact">News</a>
+            <a href="#new">Nouveautés</a>
           </li>
         </ul>
       </div>
@@ -49,20 +52,21 @@
             class="wallPaper"
           />
         </div>
-        <div class="carousel-wrapper">
-         
-          <div class="doc">
-            <img
-              src="./assets/images/Spider-Man-2.jpeg"
-              alt="profile"
-              class="wallPaper"
-            />
-          </div>
+        <div class="doc">
+          <img
+            src="./assets/images/Spider-Man-2.jpeg"
+            alt="profile"
+            class="wallPaper"
+          />
+        </div>
+      </div>
     </section>
     <div class="btn">
       <button id="prevBtn" class="btn-show">Précédent</button>
       <button id="nextBtn" class="btn-show">Suivant</button>
     </div>
+
+    <!--La section de mon store gaming-->
     <section class="bigo" id="stockage">
       <form id="addNewGame" action="" method="post" class="gameForm">
         <h1 class="title">ajouter un nouveau jeu dans le store</h1>
@@ -155,8 +159,12 @@
         <button class="addGame">Ajouter jeux</button>
       </form>
     </section>
+
+    <!--La section de mes clients-->
     <section class="clientBigo" id="clientStock">
+      
       <form id="addNewClient" action="" method="post" class="clientForm">
+        <h1 class="title">Enregistrer un nouveau client après un achat </h1>
         <div class="inputEnter">
           <label class="txt" for="nom">Nom </label>
           <input class="inputForm" type="text" name="nom" id="nom" required />

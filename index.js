@@ -4,7 +4,7 @@ import {
   getClientList,
 } from "./controller/clientController.js";
 import { addGame, buyGame, getGameList } from "./controller/gameController.js";
-import { showClientList } from "./view/clientView.js";
+import { showClientList, showClientPurchases } from "./view/clientView.js";
 import { showGame } from "./view/gameView.js";
 
 addGame(
@@ -109,7 +109,7 @@ addGame(
 );
 
 addClient("Alice", 25, "Action", "PlayStation 4", []);
-addClient("Bob", 30, "Sports", "Xbox Series X");
+addClient("Bob", 30, "Sports", "Xbox Series X", []);
 
 const clientList = getClientList();
 console.log(clientList);
@@ -117,8 +117,12 @@ console.log(clientList);
 const alice = getClientList()[0];
 const storm4 = getGameList()[0];
 
+const bob = getClientList()[1];
+const ww2 = getGameList()[3];
+
 console.log("****************************************************************");
 clientBuyGame(alice, storm4);
+clientBuyGame(bob, ww2);
 console.log("****************************************************************");
 
 const gameList = getGameList();
@@ -137,6 +141,8 @@ buyGame(gameToBuy);
 
 console.log("****************************************************************");
 
+
+
 const onSubmitForm = (gameData) => {
   const gameContainer = document.querySelector(".container");
 
@@ -152,6 +158,7 @@ const onSubmitForm = (gameData) => {
   const title = document.createElement("h5");
   title.setAttribute("class", "gameTitle");
   title.appendChild(document.createTextNode(gameData.titre));
+
   disk.appendChild(title);
 
   const details = document.createElement("p");
@@ -167,12 +174,49 @@ const onSubmitForm = (gameData) => {
   gameContainer.appendChild(disk);
 };
 
+
+
+
+
+
+
+const onSubmitclientForm = (clientData) => {
+  const clientContainer = document.querySelector(".clientContainer");
+
+  const client = document.createElement("article");
+  client.setAttribute("class", "client");
+
+  const title = document.createElement("h5");
+  title.setAttribute("class", "clientTitle");
+  title.appendChild(document.createTextNode(clientData.nom));
+  client.appendChild(title);
+
+  const clientDetails = document.createElement("p");
+  clientDetails.setAttribute("class", "clientDetails");
+  clientDetails.innerHTML = `Age: ${clientData.age} ans <br>
+                         Le genre préféré: ${clientData.genrePrefere}<br>
+                         La plateforme: ${clientData.plateformePreferee}<br>
+                         Jeux achetés: ${showClientPurchases(
+                           clientData.jeuxAchete
+                         )}`;
+  client.appendChild(clientDetails);
+  clientContainer.appendChild(client);
+};
+
+
+
+
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const gameForm = document.querySelector("#addNewGame");
-  const submitButton = document.querySelector(".addGame");
+  const submitGameButton = document.querySelector(".addGame");
 
-  if (gameForm && submitButton && gameSection) {
-    submitButton.addEventListener("click", function (event) {
+  if (gameForm && submitGameButton) {
+    submitGameButton.addEventListener("click", function (event) {
       event.preventDefault();
 
       const formData = new FormData(gameForm);
@@ -199,7 +243,7 @@ document.addEventListener("DOMContentLoaded", function () {
         gameData.plateforme &&
         gameData.prix
       ) {
-        submitButton.classList.add("success");
+        submitGameButton.classList.add("success");
         console.log("Données du jeu:", gameData);
 
         addGame(
@@ -228,6 +272,55 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+  const clientForm = document.querySelector("#addNewClient");
+  const clientGameButton = document.querySelector(".addClient");
+
+  if (clientForm && clientGameButton) {
+    clientGameButton.addEventListener("click", function (e) {
+      e.preventDefault();
+      let clientData = {
+        nom: clientForm.querySelector("#nom").value,
+        age: clientForm.querySelector("#age").value,
+        genrePrefere: clientForm.querySelector("#genrePrefere").value,
+        plateformePreferee: clientForm.querySelector("#plateformePreferee").value,
+        jeuxAchete: clientForm.querySelector("#jeuxAchete").value.split(',')
+      };
+
+      if (
+        clientData.nom &&
+        clientData.age &&
+        clientData.genrePrefere &&
+        clientData.plateformePreferee &&
+        clientData.jeuxAchete
+      ) {
+        clientGameButton.classList.add("success");
+        console.log("Données de mes clients:", clientData);
+
+        addClient(
+          clientData.nom,
+          parseInt(clientData.age),
+          clientData.genrePrefere,
+          clientData.plateformePreferee,
+          clientData.jeuxAchete
+        );
+
+        onSubmitclientForm(clientData);
+
+        clientForm.reset();
+      } else {
+        console.error("Veuillez remplir tous les champs obligatoires.");
+      }
+    });
+  } else {
+    console.error(
+      "La section de formulaire de jeu ou le bouton n'a pas été trouvée"
+    );
+  }
+});
+
+
+// affichage de mon store gaming et de ma liste de client
+document.addEventListener("DOMContentLoaded", function () {
   const gameSection = document.querySelector("#stockage");
   const clientSection = document.querySelector("#clientStock");
 
@@ -249,8 +342,8 @@ const carouselWrapper = document.querySelector(".carousel-wrapper");
 const docs = document.querySelectorAll(".doc");
 let myCarousel = 0;
 
-function showImage(index) {
-  const position = -index * 100 + "%";
+function showImage(i) {
+  const position = -i * 100 + "%";
   carouselWrapper.style.transform = "translateX(" + position + ")";
 }
 

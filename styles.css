@@ -56,12 +56,14 @@ a:hover {
 .icons-nav {
     width: 30px;
     height: 30px;
+    cursor: pointer;
 
 }
 .profile-icons {
     width: 30px;
     height: 30px;
     border-radius: 50Px;
+    cursor: pointer;
 
 }
 
@@ -135,6 +137,7 @@ a:hover {
     width: 150px; 
     text-align: right;
     margin-right: 10px; 
+    color: aliceblue;
 }
 
 .inputEnter {
@@ -169,6 +172,7 @@ a:hover {
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: center;
+    margin-bottom: 20rem;
     
     
   }
@@ -222,6 +226,13 @@ a:hover {
 }
 
 .details {
+    color: white;
+    background-color: rgb(46, 44, 44);
+    font-size: 10px;
+    opacity: 0.9;
+}
+
+.clientDetails {
     color: white;
     background-color: rgb(46, 44, 44);
     font-size: 10px;
