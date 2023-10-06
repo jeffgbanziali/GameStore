@@ -67,12 +67,41 @@ a:hover {
 
 
 .wallPaper {
-    width: 1000px;
-    height: 300px;
+    width: 100%;
+    height: auto;
     border-radius: 20px;
 
 }
 
+.carousel-container {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .carousel-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+
+  .doc {
+    width: 100%;
+  }
+
+ .btn {
+    display: flex;
+    justify-content: center;
+    margin-top:10px ;
+    gap: 2rem;
+ }
+
+ .btn-show {
+    width: 5rem;
+    height: 2rem;
+    border-radius: 2rem;
+    background-color: #7712c0;
+    color: aliceblue;
+ }
 
 .stocks {
     display: flex;

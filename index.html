@@ -40,15 +40,29 @@
         </div>
       </div>
     </nav>
-    <section>
-      <div class="doc">
-        <img
-          src="./assets/images//Spider-Man-2.jpeg"
-          alt="profile"
-          class="wallPaper"
-        />
-      </div>
+    <section class="carousel-container">
+      <div class="carousel-wrapper">
+        <div class="doc">
+          <img
+            src="./assets/images/Spider-Man-2.jpeg"
+            alt="profile"
+            class="wallPaper"
+          />
+        </div>
+        <div class="carousel-wrapper">
+         
+          <div class="doc">
+            <img
+              src="./assets/images/Spider-Man-2.jpeg"
+              alt="profile"
+              class="wallPaper"
+            />
+          </div>
     </section>
+    <div class="btn">
+      <button id="prevBtn" class="btn-show">Précédent</button>
+      <button id="nextBtn" class="btn-show">Suivant</button>
+    </div>
     <section class="bigo" id="stockage">
       <form id="addNewGame" action="" method="post" class="gameForm">
         <h1 class="title">ajouter un nouveau jeu dans le store</h1>
@@ -166,7 +180,12 @@
           <label class="txt" for="plateformePreferee"
             >Plateforme préférée
           </label>
-          <select class="inputForm" name="plateforme" id="plateformePreferee" required>
+          <select
+            class="inputForm"
+            name="plateforme"
+            id="plateformePreferee"
+            required
+          >
             <option value="PlayStation 4">PlayStation 4</option>
             <option value="Xbox Series X">Xbox Series X</option>
             <option value="PlayStation 5">PlayStation 5</option>
@@ -186,7 +205,6 @@
         </div>
         <button class="addClient">Ajouter client</button>
       </form>
-    
     </section>
     <script type="module" src="index.js"></script>
   </body>

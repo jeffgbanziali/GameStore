@@ -137,42 +137,39 @@ buyGame(gameToBuy);
 
 console.log("****************************************************************");
 
-
-
 const onSubmitForm = (gameData) => {
   const gameContainer = document.querySelector(".container");
 
-        const disk = document.createElement("article");
-        disk.setAttribute("class", "disk");
+  const disk = document.createElement("article");
+  disk.setAttribute("class", "disk");
 
-        const image = document.createElement("img");
-        image.setAttribute("class", "image");
-        image.src = gameData.image; 
-        image.alt = gameData.titre;
-        disk.appendChild(image);
+  const image = document.createElement("img");
+  image.setAttribute("class", "image");
+  image.src = gameData.image;
+  image.alt = gameData.titre;
+  disk.appendChild(image);
 
-        const title = document.createElement("h5");
-        title.setAttribute("class", "gameTitle");
-        title.appendChild(document.createTextNode(gameData.titre));
-        disk.appendChild(title);
+  const title = document.createElement("h5");
+  title.setAttribute("class", "gameTitle");
+  title.appendChild(document.createTextNode(gameData.titre));
+  disk.appendChild(title);
 
-        const details = document.createElement("p");
-        details.setAttribute("class", "details");
-        details.innerHTML = `Maison d'édition: ${gameData.maisonEdition}<br>
+  const details = document.createElement("p");
+  details.setAttribute("class", "details");
+  details.innerHTML = `Maison d'édition: ${gameData.maisonEdition}<br>
                              Année d'édition: ${gameData.anneeEdition}<br>
                              Stock: ${gameData.stock}<br>
                              Genre: ${gameData.genre}<br>
                              Plateforme: ${gameData.plateforme}<br>
                              Prix: ${gameData.prix} € `;
 
-        disk.appendChild(details);
-        gameContainer.appendChild(disk);
-}
+  disk.appendChild(details);
+  gameContainer.appendChild(disk);
+};
 
 document.addEventListener("DOMContentLoaded", function () {
   const gameForm = document.querySelector("#addNewGame");
   const submitButton = document.querySelector(".addGame");
-  const gameSection = document.querySelector("#stockage");
 
   if (gameForm && submitButton && gameSection) {
     submitButton.addEventListener("click", function (event) {
@@ -216,7 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
           parseFloat(gameData.prix)
         );
 
-        onSubmitForm(gameData); 
+        onSubmitForm(gameData);
 
         gameForm.reset();
       } else {
@@ -229,7 +226,6 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   }
 });
-
 
 document.addEventListener("DOMContentLoaded", function () {
   const gameSection = document.querySelector("#stockage");
@@ -245,4 +241,32 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     console.error("La section de jeu n'a pas été trouvée");
   }
+});
+
+// ma fonction de déclencement du carousel
+
+const carouselWrapper = document.querySelector(".carousel-wrapper");
+const docs = document.querySelectorAll(".doc");
+let myCarousel = 0;
+
+function showImage(index) {
+  const position = -index * 100 + "%";
+  carouselWrapper.style.transform = "translateX(" + position + ")";
+}
+
+function nextImage() {
+  myCarousel = (myCarousel + 1) % docs.length;
+  showImage(myCarousel);
+}
+
+function prevImage() {
+  myCarousel = (myCarousel - 1 + docs.length) % docs.length;
+  showImage(myCarousel);
+}
+
+document.getElementById("prevBtn").addEventListener("click", prevImage);
+document.getElementById("nextBtn").addEventListener("click", nextImage);
+
+document.addEventListener("DOMContentLoaded", function () {
+  showImage(myCarousel);
 });
