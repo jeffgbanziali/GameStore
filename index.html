@@ -4,9 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="icon" href="./assets/icons/gaming-logo-49540.png"
-    />
+    <link rel="icon" href="./assets/icons/gaming-logo-49540.png" />
     <title>Kinzo Game</title>
   </head>
   <body>
@@ -43,24 +41,9 @@
         </div>
       </div>
     </nav>
-    <section class="carousel-container">
-      <div class="carousel-wrapper">
-        <div class="doc">
-          <img
-            src="./assets/images/Spider-Man-2.jpeg"
-            alt="profile"
-            class="wallPaper"
-          />
-        </div>
-        <div class="doc">
-          <img
-            src="./assets/images/Spider-Man-2.jpeg"
-            alt="profile"
-            class="wallPaper"
-          />
-        </div>
-      </div>
-    </section>
+    <div id="carousel-container">
+      <img id="carouselImage" src="" />
+    </div>
     <div class="btn">
       <button id="prevBtn" class="btn-show">Précédent</button>
       <button id="nextBtn" class="btn-show">Suivant</button>
@@ -158,13 +141,14 @@
         </div>
         <button class="addGame">Ajouter jeux</button>
       </form>
+      <h2 id="totalStock"></h2>
     </section>
+    <section class="bigo" id="stockageRestant"></section>
 
     <!--La section de mes clients-->
     <section class="clientBigo" id="clientStock">
-      
       <form id="addNewClient" action="" method="post" class="clientForm">
-        <h1 class="title">Enregistrer un nouveau client après un achat </h1>
+        <h1 class="title">Enregistrer un nouveau client après un achat</h1>
         <div class="inputEnter">
           <label class="txt" for="nom">Nom </label>
           <input class="inputForm" type="text" name="nom" id="nom" required />

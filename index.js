@@ -3,7 +3,7 @@ import {
   clientBuyGame,
   getClientList,
 } from "./controller/clientController.js";
-import { addGame, buyGame, getGameList } from "./controller/gameController.js";
+import { addGame, buyGame, getGameList, totalStock } from "./controller/gameController.js";
 import { showClientList, showClientPurchases } from "./view/clientView.js";
 import { showGame } from "./view/gameView.js";
 
@@ -108,6 +108,48 @@ addGame(
   39.99
 );
 
+
+document.addEventListener("DOMContentLoaded", function () {
+  const gameSection = document.querySelector("#stockage");
+  const totalStockDisplay = document.querySelector("#totalStock");
+  showGame(gameSection);
+  const stock = totalStock();
+  totalStockDisplay.textContent = `Stock total : ${stock}`;
+  console.log("Stock total de tous les jeux :", stock);
+
+  if (gameSection) {
+    const jeuAchete = "EA FC 24";
+    const achatReussi = buyGame(jeuAchete);
+    if (achatReussi) {
+      const jeuxRestants = getGameList();
+      console.log("Liste des jeux restants après l'achat :", jeuxRestants);
+      const gameSection = document.querySelector('#stockageRestant')
+      showGame(gameSection);
+      const stock = totalStock();
+      totalStockDisplay.textContent = `Stock total : ${stock}`;
+      console.log("Stock total de tous les jeux :", stock);
+
+    } else {
+      console.log("L'achat a échoué.");
+    }
+
+  } else {
+    console.error("La section de jeu n'a pas été trouvée");
+  }
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const clientSection = document.querySelector("#clientStock");
+  if (clientSection) {
+    showClientList(clientSection);
+  } else {
+    console.error("La section de jeu n'a pas été trouvée");
+  }
+});
+
+
+
 addClient("Alice", 25, "Action", "PlayStation 4", []);
 addClient("Bob", 30, "Sports", "Xbox Series X", []);
 
@@ -123,26 +165,10 @@ const ww2 = getGameList()[3];
 console.log("****************************************************************");
 clientBuyGame(alice, storm4);
 clientBuyGame(bob, ww2);
-console.log("****************************************************************");
-
-const gameList = getGameList();
-console.log(gameList);
-
-console.log("****************************************************************");
-
-const gameListAfterPurchase = getGameList();
-console.log("Liste des jeux après l'achat:", gameListAfterPurchase);
-
-console.log("****************************************************************");
-
-console.log("****************************************************************");
-const gameToBuy = "EA FC 24";
-buyGame(gameToBuy);
-
-console.log("****************************************************************");
 
 
 
+///////////////////////////////////////////////////////////////////////////////////////
 const onSubmitForm = (gameData) => {
   const gameContainer = document.querySelector(".container");
 
@@ -175,10 +201,7 @@ const onSubmitForm = (gameData) => {
 };
 
 
-
-
-
-
+///////////////////////////////////////////////////////////////////////////////////////
 
 const onSubmitclientForm = (clientData) => {
   const clientContainer = document.querySelector(".clientContainer");
@@ -197,20 +220,15 @@ const onSubmitclientForm = (clientData) => {
                          Le genre préféré: ${clientData.genrePrefere}<br>
                          La plateforme: ${clientData.plateformePreferee}<br>
                          Jeux achetés: ${showClientPurchases(
-                           clientData.jeuxAchete
-                         )}`;
+    clientData.jeuxAchete
+  )}`;
   client.appendChild(clientDetails);
   clientContainer.appendChild(client);
 };
 
 
-
-
-
-
-
-
-
+///////////////////////////////////////////////////////////////////////////////////////
+//formulaire d'ajout d'un nouveau jeux dans le store gaming
 document.addEventListener("DOMContentLoaded", function () {
   const gameForm = document.querySelector("#addNewGame");
   const submitGameButton = document.querySelector(".addGame");
@@ -271,6 +289,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+///////////////////////////////////////////////////////////////////////////////////////
+//formulaire d'ajout d'un nouveau client dans le store 
 document.addEventListener("DOMContentLoaded", function () {
   const clientForm = document.querySelector("#addNewClient");
   const clientGameButton = document.querySelector(".addClient");
@@ -319,47 +339,37 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// affichage de mon store gaming et de ma liste de client
-document.addEventListener("DOMContentLoaded", function () {
-  const gameSection = document.querySelector("#stockage");
-  const clientSection = document.querySelector("#clientStock");
 
-  if (gameSection) {
-    showGame(gameSection);
-  } else {
-    console.error("La section de jeu n'a pas été trouvée");
-  }
-  if (clientSection) {
-    showClientList(clientSection);
-  } else {
-    console.error("La section de jeu n'a pas été trouvée");
-  }
-});
 
-// ma fonction de déclencement du carousel
+///////////////////////////////////////////////////////////////////////////////////////
+// ma fonction de déclenchement du carousel
+const tab = ["./assets/images/storm.avif", "./assets/images/fc24.jpg", "./assets/images/ac.png"];
+let currentIndex = 0;
 
-const carouselWrapper = document.querySelector(".carousel-wrapper");
-const docs = document.querySelectorAll(".doc");
-let myCarousel = 0;
-
-function showImage(i) {
-  const position = -i * 100 + "%";
-  carouselWrapper.style.transform = "translateX(" + position + ")";
+function showImage(index) {
+  const imageSrc = tab[index];
+  const carouselImage = document.getElementById("carouselImage");
+  carouselImage.src = imageSrc;
 }
 
 function nextImage() {
-  myCarousel = (myCarousel + 1) % docs.length;
-  showImage(myCarousel);
+  currentIndex = (currentIndex + 1) % tab.length;
+  showImage(currentIndex);
 }
 
 function prevImage() {
-  myCarousel = (myCarousel - 1 + docs.length) % docs.length;
-  showImage(myCarousel);
+  currentIndex = (currentIndex - 1 + tab.length) % tab.length;
+  showImage(currentIndex);
 }
 
-document.getElementById("prevBtn").addEventListener("click", prevImage);
-document.getElementById("nextBtn").addEventListener("click", nextImage);
+const nextButton = document.getElementById("nextBtn");
+nextButton.addEventListener("click", nextImage);
 
-document.addEventListener("DOMContentLoaded", function () {
-  showImage(myCarousel);
-});
+const prevButton = document.getElementById("prevBtn");
+prevButton.addEventListener("click", prevImage);
+
+// Afficher la première image initialement
+showImage(0);
+
+
+

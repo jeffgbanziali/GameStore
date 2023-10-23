@@ -24,7 +24,7 @@ export const addGame = (
   );
 
   Game.gameList.push(newGame);
-  
+
 };
 
 
@@ -40,12 +40,24 @@ export const buyGame = (titre) => {
     console.log(
       `Achat de ${titre} effectué. Nouveau stock: ${Game.gameList[gameIndex].stock}`
     );
+
+    // Affichage de la liste des jeux restants
+    console.log("Jeux restants après l'achat :");
+    console.log(Game.gameList);
+
     return true;
   } else {
     console.log(`Impossible d'acheter ${titre}. Stock épuisé.`);
     return false;
   }
 };
+
+
+export const totalStock = () => {
+  const totalStock = Game.gameList.reduce((acc, game) => acc + game.stock, 0);
+  return totalStock;
+};
+
 
 export const handleImageUpload = () => {
   const imageInput = document.getElementById("imageInput");
